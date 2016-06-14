@@ -19,7 +19,7 @@ class Game < Gosu::Window
 
   def button_down(id)
 
-    if id == Gosu::KbC
+    if id == Gosu::KbEscape
 
       close
 
@@ -28,5 +28,12 @@ class Game < Gosu::Window
 
   def update
     @background.scroll!
+
+    if button_down?(Gosu::KbUp)
+      @hero.move_up!
+    elsif button_down?(Gosu::KbDown)
+      @hero.move_down!(height) #height = alto de la pantalla (Gosu::Window)
+    end
+
   end
 end

@@ -17,4 +17,12 @@ class Hero
     sprite.draw(@x, @y, 1)
   end
 
+  def move_up!
+    @y -= 5 if @y >= 0
+  end
+
+  def move_down!(height)
+    @y += 5 if @y <= height - @height
+  end
+
 end
