@@ -1,4 +1,5 @@
 require_relative 'Background'
+require_relative 'Hero'
 
 require 'gosu'
 
@@ -8,10 +9,12 @@ class Game < Gosu::Window
 
     self.caption = 'Flying hero!'
     @background = Background.new
+    @hero = Hero.new
   end
 
   def draw
     @background.draw
+    @hero.draw
   end
 
   def button_down(id)
