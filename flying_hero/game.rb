@@ -37,5 +37,6 @@ class Game < Gosu::Window
     elsif button_down?(Gosu::KbDown)
       @hero.move_down!(height) #height = alto de la pantalla (Gosu::Window)
     end
+    @candy.move!
   end
 end

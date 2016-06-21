@@ -9,6 +9,7 @@ class FlyingItem
 
     @y = Random.rand(window.height - @height)
     @x = window.width - 100
+    @win = window.width
   end
 
   def draw
