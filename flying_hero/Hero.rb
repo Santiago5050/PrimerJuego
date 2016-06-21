@@ -13,7 +13,7 @@ class Hero
   end
 
   def draw
-    sprite = @sprites[Gosu::milliseconds / 75 % @sprites.size]
+    sprite = @sprites[Gosu::milliseconds / 75 % @sprites.size] # El % funciona para que la division entre el tiempo y la velocidad se quede entre los elementos del arreglo disponibles
     sprite.draw(@x, @y, 1)
   end
 

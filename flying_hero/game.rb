@@ -1,5 +1,6 @@
 require_relative 'Background'
 require_relative 'Hero'
+require_relative 'candy'
 
 require 'gosu'
 
@@ -10,11 +11,13 @@ class Game < Gosu::Window
     self.caption = 'Flying hero!'
     @background = Background.new
     @hero = Hero.new
+    @candy = Candy.new(self)
   end
 
   def draw
     @background.draw
     @hero.draw
+    @candy.draw
   end
 
   def button_down(id)
@@ -34,6 +37,5 @@ class Game < Gosu::Window
     elsif button_down?(Gosu::KbDown)
       @hero.move_down!(height) #height = alto de la pantalla (Gosu::Window)
     end
-
   end
 end
