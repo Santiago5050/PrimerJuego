@@ -18,8 +18,8 @@ class Game < Gosu::Window
   end
 
   def set_asteroid
-    @asteroid = @asteroid && @asteroid.instance_of?(AsteroidBig.new(self)) ?
-      AsteroidSmall.new(self) : AsteroidBig.new(self) 
+    @asteroid = @asteroid && @asteroid.instance_of?(AsteroidBig) ?
+      AsteroidSmall.new(self) : AsteroidBig.new(self)
   end
 
   def draw
@@ -46,7 +46,14 @@ class Game < Gosu::Window
     elsif button_down?(Gosu::KbDown)
       @hero.move_down!(height) #height = alto de la pantalla (Gosu::Window)
     end
+
     @candy.move!
+    @asteroid.move!
+
+    if @asteroid.x < (0 - @asteroid.width)
+      set_asteroid
+    end
+
     if @candy.x < (0 - @candy.width)
       @candy.reset!(self)
     end

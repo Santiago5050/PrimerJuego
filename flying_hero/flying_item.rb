@@ -2,7 +2,7 @@ require 'gosu'
 
 class FlyingItem
 
-  attr_accessor :width
+  attr_accessor :width, :x
 
   def initialize(window)
     @image = Gosu::Image.new(self.class.image_path)
