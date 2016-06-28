@@ -3,6 +3,7 @@ require_relative 'Hero'
 require_relative 'candy'
 require_relative 'asteroid_small'
 require_relative 'asteroid_big'
+require_relative 'scoreboard'
 
 require 'gosu'
 
@@ -15,6 +16,7 @@ class Game < Gosu::Window
     @hero = Hero.new
     @candy = Candy.new(self)
     set_asteroid
+    @score = Scoreboard.new
   end
 
   def set_asteroid
@@ -23,6 +25,7 @@ class Game < Gosu::Window
   end
 
   def draw
+    @score.draw
     @asteroid.draw
     @background.draw
     @hero.draw
