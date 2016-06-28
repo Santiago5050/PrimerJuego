@@ -1,6 +1,8 @@
 require_relative 'Background'
 require_relative 'Hero'
 require_relative 'candy'
+require_relative 'asteroid_small'
+require_relative 'asteroid_big'
 
 require 'gosu'
 
@@ -12,9 +14,16 @@ class Game < Gosu::Window
     @background = Background.new
     @hero = Hero.new
     @candy = Candy.new(self)
+    set_asteroid
+  end
+
+  def set_asteroid
+    @asteroid = @asteroid && @asteroid.instance_of?(AsteroidBig.new(self)) ?
+      AsteroidSmall.new(self) : AsteroidBig.new(self) 
   end
 
   def draw
+    @asteroid.draw
     @background.draw
     @hero.draw
     @candy.draw
@@ -38,5 +47,8 @@ class Game < Gosu::Window
       @hero.move_down!(height) #height = alto de la pantalla (Gosu::Window)
     end
     @candy.move!
+    if @candy.x < (0 - @candy.width)
+      @candy.reset!(self)
+    end
   end
 end

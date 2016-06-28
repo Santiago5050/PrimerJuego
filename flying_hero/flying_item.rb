@@ -2,13 +2,14 @@ require 'gosu'
 
 class FlyingItem
 
+  attr_accessor :width
+
   def initialize(window)
     @image = Gosu::Image.new(self.class.image_path)
     @width = @image.width
     @height = @image.height
 
-    @y = Random.rand(window.height - @height)
-    @x = window.width - 100
+    reset!(window)
     @win = window.width
   end
 
@@ -16,5 +17,9 @@ class FlyingItem
     @image.draw(@x, @y, 1, 1, 1) #
   end
 
+  def reset!(window)
+    @y = Random.rand(window.height - @height)
+    @x = window.width - 100
+  end
 
 end
