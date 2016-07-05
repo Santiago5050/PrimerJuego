@@ -60,5 +60,10 @@ class Game < Gosu::Window
     if @candy.x < (0 - @candy.width)
       @candy.reset!(self)
     end
+
+    if @hero.bumped_into?(@candy)
+      @score.update_score!(@candy.points)
+      @candy.reset!(self)
+    end
   end
 end
