@@ -15,6 +15,10 @@ class AsteroidBig < Asteroid
     2
   end
 
+  def self.value
+    -20
+  end
+
   def move!
     @x -= 15
   end

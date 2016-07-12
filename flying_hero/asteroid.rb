@@ -10,6 +10,10 @@ class Asteroid < FlyingItem
     @width = @image.width * self.class.scale_x
   end
 
+  def points
+    self.class.value
+  end
+
   def draw
     @image.draw(@x, @y, 1, self.class.scale_x, self.class.scale_y)
   end
